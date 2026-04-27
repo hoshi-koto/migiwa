@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>汀 — Migiwa</title>
+<meta name="description" content="境界に、そっと在る。汀（みぎわ）は、医療と日常のあいだ、専門家と当事者のあいだに、穏やかな場所をつくる事業体です。" />
+<meta property="og:title" content="汀 — Migiwa" />
+<meta property="og:description" content="境界に、そっと在る。" />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+<style>
+  /* ===== 和の中間色 ===== */
+  :root {
+    --someiyoshino: #FAF6F2;
+    --kinari:      #F2EAE0;
+    --usuhanada:   #C5CFD2;
+    --karenashi:   #B8AE9E;
+    --rikyu:       #8C8470;
+    --sumi:        #2A2823;
+    --usuzumi:     #5A554C;
+    --kihada:      #C9B568;
+
+    --font-display: 'Shippori Mincho', 'Yu Mincho', 'YuMincho', serif;
+    --font-latin:   'Cormorant Garamond', 'Shippori Mincho', serif;
+
+    --max: 880px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--sumi);
+    background: var(--someiyoshino);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(184,174,158,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(197,207,210,0.10) 0%, transparent 50%);
+  }
+
+  main { position: relative; z-index: 1; }
+
+  .container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ヒーロー */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 32px;
+    position: relative;
+  }
+
+  .hero-mark {
+    font-size: clamp(120px, 22vw, 220px);
+    font-weight: 500;
+    color: var(--sumi);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 1.6s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-romaji {
+    font-family: var(--font-latin);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.6em;
+    color: var(--rikyu);
+    margin-top: 28px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1.6s 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-tagline {
+    font-size: clamp(15px, 2.2vw, 18px);
+    font-weight: 400;
+    color: var(--usuzumi);
+    margin-top: 80px;
+    letter-spacing: 0.3em;
+    opacity: 0;
+    animation: fadeUp 1.6s 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: var(--karenashi);
+    margin-top: 80px;
+    opacity: 0;
+    animation: drawLine 1.4s 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes drawLine {
+    from { opacity: 0; height: 0; }
+    to { opacity: 1; height: 60px; }
+  }
+
+  /* セクション共通 */
+  section {
+    padding: 140px 0;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: var(--font-latin);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: var(--rikyu);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: block;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--karenashi);
+    margin-top: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 500;
+    color: var(--sumi);
+    margin-bottom: 56px;
+    letter-spacing: 0.1em;
+  }
+
+  /* About */
+  .about p {
+    font-size: 16px;
+    line-height: 2.2;
+    color: var(--usuzumi);
+    margin-bottom: 28px;
+    max-width: 640px;
+  }
+
+  .about p.lead {
+    font-size: 18px;
+    color: var(--sumi);
+    line-height: 2.0;
+  }
+
+  .about .quote {
+    font-size: 18px;
+    color: var(--sumi);
+    border-left: 1px solid var(--karenashi);
+    padding: 8px 0 8px 32px;
+    margin: 64px 0 64px 24px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    line-height: 2.2;
+  }
+
+  /* Services */
+  .services {
+    background: var(--kinari);
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-item {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(184,174,158,0.4);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    transition: padding-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .service-item:first-child {
+    border-top: 1px solid rgba(184,174,158,0.4);
+  }
+
+  .service-item:not(.coming):hover {
+    padding-left: 12px;
+  }
+
+  .service-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--sumi);
+    letter-spacing: 0.1em;
+  }
+
+  .service-name .romaji {
+    display: block;
+    font-family: var(--font-latin);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--rikyu);
+    letter-spacing: 0.4em;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: var(--usuzumi);
+    line-height: 2.0;
+  }
+
+  .service-desc .status {
+    display: inline-block;
+    font-family: var(--font-latin);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--rikyu);
+    border: 1px solid var(--karenashi);
+    padding: 3px 10px;
+    margin-left: 12px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+
+  .service-item.coming {
+    opacity: 0.55;
+  }
+
+  .coming-name {
+    font-family: var(--font-latin);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: var(--rikyu);
+    text-transform: uppercase;
+  }
+
+  /* Contact */
+  .contact {
+    text-align: left;
+  }
+
+  .contact-text {
+    font-size: 16px;
+    line-height: 2.2;
+    color: var(--usuzumi);
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  .contact-info {
+    font-size: 15px;
+    line-height: 2.4;
+    color: var(--sumi);
+  }
+
+  .contact-info dt {
+    font-family: var(--font-latin);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--rikyu);
+    text-transform: uppercase;
+    margin-top: 24px;
+  }
+
+  .contact-info dt:first-child {
+    margin-top: 0;
+  }
+
+  .contact-info dd {
+    font-size: 16px;
+    color: var(--sumi);
+    margin-top: 4px;
+  }
+
+  .contact-info a {
+    color: var(--sumi);
+    text-decoration: none;
+    border-bottom: 1px solid var(--karenashi);
+    padding-bottom: 2px;
+    transition: border-color 0.4s ease;
+  }
+
+  .contact-info a:hover {
+    border-color: var(--sumi);
+  }
+
+  /* Footer */
+  footer {
+    padding: 80px 32px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(184,174,158,0.3);
+  }
+
+  .footer-mark {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--sumi);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-romaji {
+    font-family: var(--font-latin);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: var(--rikyu);
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-family: var(--font-latin);
+    font-size: 10px;
+    color: var(--rikyu);
+    letter-spacing: 0.3em;
+    margin-top: 32px;
+  }
+
+  /* Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .service-item.coming.reveal.visible {
+    opacity: 0.55;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    section {
+      padding: 100px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .service-item {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 32px 0;
+    }
+
+    .service-item:not(.coming):hover {
+      padding-left: 0;
+    }
+
+    .about .quote {
+      margin: 48px 0 48px 8px;
+      padding-left: 24px;
+    }
+
+    .hero-tagline {
+      margin-top: 56px;
+      letter-spacing: 0.2em;
+    }
+
+    .hero-divider {
+      margin-top: 56px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="hero-mark">汀</div>
+    <div class="hero-romaji">Migiwa</div>
+    <div class="hero-tagline">境界に、そっと在る。</div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- 汀とは -->
+  <section class="about">
+    <div class="container">
+      <span class="section-label reveal">About</span>
+      <h2 class="section-title reveal">汀について</h2>
+
+      <p class="lead reveal">
+        汀（みぎわ）とは、陸地が水に接する場所、水のほとり。
+      </p>
+      <p class="reveal">
+        万葉の時代から使われてきたこの言葉は、海と陸の境目にあって、波が立たない、穏やかで平らかな水辺を指します。
+      </p>
+
+      <div class="quote reveal">
+        医療と日常のあいだ。<br>
+        専門家と当事者のあいだ。<br>
+        伝えたい気持ちと、まだ言葉にならない自分のあいだに、<br>
+        穏やかな場所をつくる。
+      </div>
+
+      <p class="reveal">
+        私たちは、制度の中にも、孤独の中にも収まりきらない、その"間"にある気持ちを引き受ける場所を目指しています。
+      </p>
+      <p class="reveal">
+        小さく、長く、続けられること。それを何より大切にしています。
+      </p>
+    </div>
+  </section>
+
+  <!-- 提供しているもの -->
+  <section class="services">
+    <div class="container">
+      <span class="section-label reveal">Services</span>
+      <h2 class="section-title reveal">提供しているもの</h2>
+
+      <div class="service-list">
+        <div class="service-item reveal">
+          <div class="service-name">
+            縁側
+            <span class="romaji">Engawa</span>
+          </div>
+          <div class="service-desc">
+            オンライン個別相談室。<br>
+            病院に行くほどではないけれど、誰かに話したい。そんな気持ちを受けとめる場所です。
+            <span class="status">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="service-item reveal">
+          <div class="service-name">
+            言の葉舎
+            <span class="romaji">Kotonoha-sha</span>
+          </div>
+          <div class="service-desc">
+            発信・コンテンツ構築の伴走。<br>
+            自分の言葉で何かを始めたい人へ、文章・SNS・ブランドの土台づくりをご一緒します。
+            <span class="status">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="service-item coming reveal">
+          <div class="service-name">
+            <span class="coming-name">Coming Soon</span>
+          </div>
+          <div class="service-desc">
+            汀の三つ目の場所を、ゆっくり考えています。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section class="contact">
+    <div class="container">
+      <span class="section-label reveal">Contact</span>
+      <h2 class="section-title reveal">お問い合わせ</h2>
+
+      <p class="contact-text reveal">
+        ご相談・お仕事のご依頼・取材など、お気軽にご連絡ください。
+        穏やかなペースでお返事いたします。
+      </p>
+
+      <dl class="contact-info reveal">
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@migiwa.example">hello@migiwa.example</a></dd>
+
+        <dt>Location</dt>
+        <dd>大阪 / Online</dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-mark">汀</div>
+  <div class="footer-romaji">Migiwa</div>
+  <div class="footer-copy">© 2026 Migiwa</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
